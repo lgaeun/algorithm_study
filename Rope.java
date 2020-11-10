@@ -9,7 +9,7 @@ public class Rope {
 		
 		int n = sc.nextInt();
 		int[] arr = new int[n];
-		int[] greedy= new int[n];
+		int tmp=0;
 		int max=0;
 		
 		for (int i=0; i<n; i++) {
@@ -20,13 +20,10 @@ public class Rope {
 		
 		
 		for (int i=0; i<n;i++) {
-			greedy[n-i-1]=arr[n-i-1]*(i+1);
+			tmp=(n-i)*arr[i];
+			if (max<tmp) max=tmp;
 		}
 		
-		for(int i=0; i<n;i++) {
-			if (greedy[i]>max)
-				max=greedy[i];
-		}
 		
 		System.out.println(max);
 		
