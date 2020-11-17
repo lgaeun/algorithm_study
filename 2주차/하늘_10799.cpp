@@ -4,21 +4,21 @@
 
 int main() {
 	char str[MAX_SIZE];
-	int count = 0;
-	int result = 0;
+	int count = 0;//쌓인 쇠막대기 개수
+	int result = 0;//총 쇠막대기 수
 	scanf("%s", &str);
 	for (int i = 0; i < strlen(str); i++) {
 		if (str[i] == '('&& str[i + 1] == ')') {
 			result += count;
 			i++;
-		}
+		}//쌓인 쇠막대기 개수만큼 +
 		else if (str[i] == '(') {
 			count++;
-		}
+		}//쇠막대기 stack
 		else {
 			result++;
 			count--;
-		}
+		}//쇠막대기 pop
 	}
 	printf("%d\n", result);
 }
