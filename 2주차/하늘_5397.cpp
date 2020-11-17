@@ -106,7 +106,7 @@ int main() {
 				break;
 			case '>':
 				if (!isEmpty()) {
-					if (list.cursor == list.head && front == 1) front = 0;
+					if (list.cursor == list.head && front == 1) front = 0;//head앞이 cursor일 경우
 					else if (list.cursor == list.tail);
 					else list.cursor = list.cursor->next;
 				}
