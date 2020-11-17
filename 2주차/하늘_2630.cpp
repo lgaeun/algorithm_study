@@ -8,7 +8,7 @@ int check(int col, int row, int width) {
 	int val = mat[col][row];
 	for (int i = col; i < col + width; i++) {
 		for (int j = row; j < row + width; j++) {
-			if (val != mat[i][j]) return 0;//��ġ���� ������ return 0
+			if (val != mat[i][j]) return 0;//다른 값 발견되면 return 0
 		}
 	}
 	if (val == 1) blue++;
@@ -21,7 +21,7 @@ void recur(int col, int row, int width) {
 	else {
 		for (int i = col; i < col + width; i += width / 2) {
 			for (int j = row; j < row + width; j += width / 2) {
-				recur(i, j, width / 2);
+				recur(i, j, width / 2);//4등분 재귀호출
 			}
 		}
 	}
