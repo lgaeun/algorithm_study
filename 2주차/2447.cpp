@@ -14,7 +14,8 @@ void star(int col, int row, int width) {
 			for (int j = row; j < row + width; j += width / 3) {
 				count++;
 				if (count != 5) {
-					star(i, j, width/3);
+					star(i, j, width/3);//3등분해서 재귀호출
+					//5번째가 아닌 경우에만 *로 바꿔줌
 				}
 			}
 		}
@@ -25,7 +26,7 @@ int main() {
 	scanf("%d", &n);
 	for (int i = 0; i < 6570; i++) {
 		for (int j = 0; j < 6570; j++)
-			arr[i][j] = ' ';
+			arr[i][j] = ' ';//공백으로 초기화
 	}
 	star(1, 1, n);
 	for (int i = 1; i <= n; i++) {
