@@ -5,23 +5,22 @@ public class _2630 {
 	static int[][] paper;
 	static int white=0, blue=0;
 	
-	static void divide(int n, int x, int y) {			
+	// 4등분하기 - size = block 길이, 시작좌표 (x, y) 
+	static void divide(int size, int x, int y) {			
 			
-		if(check(n, x, y)){
+		if(check(size, x, y)){
 			if (paper[x][y] == 1) blue++;
 			else white++;
 		}
-		//4등분 
 		else {	
-			divide(n/2, x, y);				
-			divide(n/2, x, y + n/2);
-			divide(n/2, x + n/2, y);
-			divide(n/2, x + n/2, y + n/2);
+			divide(size/2, x, y);				
+			divide(size/2, x, y + size/2);
+			divide(size/2, x + size/2, y);
+			divide(size/2, x + size/2, y + size/2);
 		}
-		
 	}
 	
-	// block의 시작 좌표 x,y 
+	// block이 같은 숫자인지 확인
 	static boolean check(int size, int x, int y) {
 		for(int i = 0; i < size; i++)
 			for(int j = 0; j < size; j++)
@@ -30,7 +29,8 @@ public class _2630 {
 		
 		return true;
 	}
-
+	
+	// main
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt();
