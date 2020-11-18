@@ -1,3 +1,4 @@
+//시간초과
 import java.util.Scanner;
 
 public class _2447 {
