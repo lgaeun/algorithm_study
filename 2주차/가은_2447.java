@@ -1,4 +1,5 @@
-//시간초과
+//시간초과 해결 : bufferedwriter 이용
+import java.io.*;
 import java.util.Scanner;
 
 public class _2447 {
@@ -30,7 +31,7 @@ public class _2447 {
 		}
 		 	
 	}
-	// 공백으로 채우기 
+	
 	static void blank(int x, int y, int length) {
 		for(int i = x ; i < x + length; i++)
 			for(int j = y; j < y + length; j++)
@@ -38,7 +39,8 @@ public class _2447 {
 	}
 	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		Scanner sc = new Scanner(System.in);
 		N = sc.nextInt();
 		star = new char [N][N];
@@ -47,10 +49,12 @@ public class _2447 {
 		
 		for(int i = 0 ; i < N; i++) {
 			for( int j = 0; j < N; j++) {
-				System.out.print(star[i][j]);
+				bw.write(star[i][j]);
 			}
-			System.out.println();
+			bw.write("\n");
 		}
+		bw.flush();
+		bw.close();
 		
 	}
 
