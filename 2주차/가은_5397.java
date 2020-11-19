@@ -1,56 +1,58 @@
-import java.util.*;
+import java.io.*;
+import java.util.Stack;
 
-class Password{
-	
-	public LinkedList<Character> list = new LinkedList<Character>();
-	private int cursor=0;
-	
-	public void show() {
-		for(Character c : list)
-			System.out.print(c);
-		System.out.println();
-	}
-	
-	public void key(char input) {
-		switch(input) {
-			case '<':
-				if(cursor > 0)cursor--;		//커서가 맨 앞이 아닐때만 
-				break;
-				
-			case '>':
-				if(cursor < list.size()) cursor++; //커서가 맨 끝이 아닐때만 
-				break;
-				
-			case '-':
-				if(cursor > 0) cursor--;	//커서가 맨 앞이 아닐때만  
-				list.remove(cursor);
-				break;
-				
-			default:
-				list.add(cursor, input);
-				cursor++;			
-		}				
-	}	
-}
+//수정 : Scanner, 객체배열, Linkedlist (시간초과) -> BufferedReaer, StringBuilder, stack 사용 
 
 public class _5397 {
 	
-	public static void main(String[] args) {
+	static String getPwd(String pwd) {
 		
-		Scanner sc = new Scanner(System.in);
-		int num = sc.nextInt();
-		Password[] pwd = new Password[num]; //객체 배열에 저장
+		StringBuilder sb = new StringBuilder();
+		Stack<Character> pre = new Stack<>();
+		Stack<Character> post = new Stack<>();
+		char input;
 		
-		for(int i = 0; i < num; i++) {	
-			pwd[i] = new Password();
-			String L = sc.next();
-			for(int j = 0; j < L.length(); j++) {
-				char input = L.charAt(j);
-				pwd[i].key(input);
-			}
+		for(int i = 0; i < pwd.length(); i++) {
+			input = pwd.charAt(i);
+			
+			switch(input) {
+			case '<':
+				if(!pre.isEmpty()) post.push(pre.pop());	//커서가 맨 앞이 아닐때만 
+				break;
+			case '>':
+				if(!post.isEmpty()) pre.push(post.pop()); //커서가 맨 끝이 아닐때만 
+				break;
+			case '-':		
+				if(!pre.isEmpty()) pre.pop(); 		//커서가 맨 앞이 아닐때만 	 
+				break;
+			default:
+				pre.push(input);
+				break;				
+			}				
+		}
+		while (!post.isEmpty()) { 
+			pre.push(post.pop()); 
+		} 
+		for (int i = 0; i < pre.size(); i++) {
+			sb.append(pre.elementAt(i)); 
+		} 
+		return sb.toString();
+
+		
+	}
+	
+	public static void main(String[] args) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int num = Integer.parseInt(br.readLine());
+		String L;
+		
+		for(int i = 0; i < num; i++) {
+			L = br.readLine();
+			String pwd = getPwd(L);
+			System.out.println(pwd);
 		}
 		
-		for(int i = 0; i < num; i++)	//출력  
-			pwd[i].show();
+		
 	}
 }
