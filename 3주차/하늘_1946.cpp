@@ -11,13 +11,13 @@ typedef struct emp {
 bool cmp(const emp &a, const emp &b) {
 	if (a.doc < b.doc) return true;
 	else return false;
-}
+}//서류 순위에 따라 정렬
 
 int main() {
 	int t;
 	scanf("%d", &t);
 	while (t--) {
-		int n, count = 1;
+		int n, count = 1;//서류 1등은 무조건 채용하므로 count 초기값은 1
 		scanf("%d", &n);
 		emp employee[100001];
 		for (int i = 0; i < n; i++)
@@ -28,7 +28,7 @@ int main() {
 			if (employee[i].interview < min) {
 				count++;
 				min = employee[i].interview;
-			}
+			}//정렬순이므로 서류 점수는 반드시 뒤쳐짐. 이전까지 나왔던 면접 순위보다 반드시 높아야 함.
 		}
 		printf("%d\n", count);
 	}
