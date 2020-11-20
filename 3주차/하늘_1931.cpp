@@ -17,10 +17,10 @@ bool cmp(const confer &a, const confer &b) {
 		else return false;
 	}
 	else return false;
-}
+}//끝나는 시간에 따라 정렬. 끝나는 시간이 같을 경우 시작 시간을 기준으로 정렬
 
 int main() {
-	int n, count = 1;
+	int n, count = 1;//첫번째 회의는 반드시 포함되므로 1에서 시작
 	scanf("%d", &n);
 	for (int i = 0; i < n; i++)
 		scanf("%d%d", &conf[i].start, &conf[i].end);
@@ -30,7 +30,7 @@ int main() {
 		if (conf[i].start >= end_time) {
 			count++;
 			end_time = conf[i].end;
-		}
+		}//이전 회의가 끝난 시간보다 시작시간이 같거나 크다면 회의 
 	}
 	printf("%d\n", count);
 }
