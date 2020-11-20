@@ -5,13 +5,13 @@
 using namespace std;
 
 int n;
-int alpha_num[27];
-char alpha[11][10];
+int alpha_num[27];//알파벳 각각 크기를 저장
+char alpha[11][10];//입력받은 문자열
 
 bool cmp(const int &a, const int &b) {
 	if (a > b) return true;
 	else return false;
-}
+}//내림차순 정렬
 
 
 int main() {
@@ -23,15 +23,16 @@ int main() {
 		for (int k = len - 1; k >= 0; k--) {
 			alpha_num[alpha[i][k] - 'A'] += j;
 			j *= 10;
-		}
+		}//1의 자리부터 시작해서 각 알파벳의 value를 더해준다
 	}
 	int sum = 0;
 	sort(alpha_num, alpha_num + 27, cmp);
 	for (int i = 0; i < 10; i++) {
 		sum += alpha_num[i] * (9 - i);
-	}
+	}//가장 큰 값에 9, 8...을 
 	printf("%d\n", sum);
 }
+//등장하는 자릿수마다 계산해서 가장 큰 값을 가지는 알파벳에 9, 8... 을 부여한다. 
 
 
 /*
