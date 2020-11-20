@@ -4,8 +4,8 @@
 using namespace std;
 
 int n, L;
-int leak[1001];
-int pipe[1001];
+int leak[1001];//새는 곳 위치
+int pipe[1001];//taping 된 파이프 위치
 
 int main() {
 	int ans = 0;
@@ -18,7 +18,7 @@ int main() {
 			for (int j = 0; j < L; j++)
 				pipe[leak[i] + j] = 1;
 			ans++;
-		}
+		}//새는 곳 기준으로 테이프 길이만큼 taping bitmasking
 	}
 	printf("%d\n", ans);
 }
