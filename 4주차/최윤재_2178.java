@@ -2,12 +2,12 @@ package graph;
 import java.util.*;
 import java.io.*;
 
-public class ÃÖÀ±Àç_2178 {
+public class ìµœìœ¤ì¬_2178 {
 
 	static int maze[][];
 	static int visited[][];
 	static int axis_x[] = {0,0,-1,1};
-	static int axis_y[] = {-1,1,0,0};	//½ÌÇÏÁÂ¿ì
+	static int axis_y[] = {-1,1,0,0};	//ì‹±í•˜ì¢Œìš°
 	static int row;
 	static int column;
 	
@@ -33,10 +33,10 @@ public class ÃÖÀ±Àç_2178 {
 
 	
 	static void bfs() {
-	    Queue<Integer> x = new LinkedList<Integer>(); //x°ª¿¡ ´ëÇÑ Queue
-	    Queue<Integer> y = new LinkedList<Integer>(); //y°ª¿¡ ´ëÇÑ Queue
+	    Queue<Integer> x = new LinkedList<Integer>(); //xê°’ì— ëŒ€í•œ Queue
+	    Queue<Integer> y = new LinkedList<Integer>(); //yê°’ì— ëŒ€í•œ Queue
 	    
-	    x.offer(0); //ÀúÀå
+	    x.offer(0);  //íì— ë„£ê¸°
 	    y.offer(0);
 	    
 	    visited[0][0] = 1;
@@ -45,12 +45,11 @@ public class ÃÖÀ±Àç_2178 {
 	      int cur_x = x.poll();
 	      int cur_y = y.poll();
 	      
-	      //»óÇÏÁÂ¿ì È®ÀÎ
+	      //ìƒí•˜ì¢Œìš°
 	      for(int k = 0; k < 4;k++) {
 	        int next_x = cur_x + axis_x[k];
 	        int next_y = cur_y + axis_y[k];
 	        
-	        //À¯È¿ÇÑ ¹üÀ§ÀÎÁö È®ÀÎ
 	        if(next_x >= 0 && next_y >= 0 && next_x < row && next_y < column) {
 	          if(maze[next_x][next_y] == 1 && visited[next_x][next_y] == 0) {
 	            x.offer(next_x);
@@ -58,7 +57,7 @@ public class ÃÖÀ±Àç_2178 {
 	            
 	            visited[next_x][next_y] = 1;
 	            
-	            maze[next_x][next_y] = maze[cur_x][cur_y] + 1; //ÀÌµ¿È½¼ö
+	            maze[next_x][next_y] = maze[cur_x][cur_y] + 1;  //ì´ë™ íšŸìˆ˜ë¡œ ì €ì¥
 	          }
 	        }
 	      }
