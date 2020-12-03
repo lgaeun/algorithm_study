@@ -57,7 +57,7 @@ public class 최윤재_2178 {
 	            
 	            visited[next_x][next_y] = 1;
 	            
-	            maze[next_x][next_y] = maze[cur_x][cur_y] + 1;  //이동 횟수로 저장
+	            maze[next_x][next_y] = maze[cur_x][cur_y] + 1;  //이동 횟수를 저장
 	          }
 	        }
 	      }
