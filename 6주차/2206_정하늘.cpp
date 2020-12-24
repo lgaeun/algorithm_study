@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 int col, row;
-int map[1010][1010] = { 0, };//ÀÔ·Â
+int map[1010][1010] = { 0, };//ì…ë ¥
 
 
 typedef struct dist {
@@ -36,16 +36,16 @@ int BFS(int c, int r, int visit[1010][1010]) {
 		visit[q.col][q.row] = q.distance;
 		if (q.col < col && map[q.col + 1][q.row] == 0 && (visit[q.col + 1][q.row] == 0 || visit[q.col + 1][q.row] > q.distance + 1)) {
 			insert(q.col + 1, q.row, q.distance + 1);
-		}//»ó
+		}//ìƒ
 		if (q.col > 1 && map[q.col - 1][q.row] == 0 && (visit[q.col - 1][q.row] == 0 || visit[q.col - 1][q.row] > q.distance + 1)) {
 			insert(q.col - 1, q.row, q.distance + 1);
-		}//ÇÏ
+		}//í•˜
 		if (q.row > 1 && map[q.col][q.row - 1] == 0 && (visit[q.col][q.row - 1] == 0 || visit[q.col][q.row - 1] > q.distance + 1)) {
 			insert(q.col, q.row - 1, q.distance + 1);
-		}//ÁÂ
+		}//ì¢Œ
 		if (q.row < row && map[q.col][q.row + 1] == 0 && (visit[q.col][q.row + 1] == 0 || visit[q.col][q.row + 1] > q.distance + 1)) {
 			insert(q.col, q.row + 1, q.distance + 1);
-		}//¿ì
+		}//ìš°
 	}
 	map[c][r] = 1;
 	return visit[col][row];
@@ -70,13 +70,13 @@ int main() {
 		map[i][0] = 1;
 		map[i][row + 1] = 1;
 	}
-	//Å×µÎ¸® º®À¸·Î ¸·À½
+	//í…Œë‘ë¦¬ ë²½ìœ¼ë¡œ ë§‰ìŒ
 
 	int ans = 999999;
 	for (int i = 1; i <= col; i++) {
 		for (int j = 1; j <= row; j++) {
 			if (map[i][j] == 1) {
-				int visit[1010][1010] = { 0, };//º®¶ÕÀº °Å¸®
+				int visit[1010][1010] = { 0, };//ë²½ëš«ì€ ê±°ë¦¬
 				int val = BFS(i, j, visit);
 				if (val == 0);
 				else {
@@ -84,7 +84,7 @@ int main() {
 						ans = val;
 					}
 				}
-			}//º®ÀÌ ÀÖ´Â °÷¸¶´Ù BFS¸¦ µ¹·Áº½
+			}//ë²½ì´ ìˆëŠ” ê³³ë§ˆë‹¤ BFSë¥¼ ëŒë ¤ë´„
 		}
 	}
 	if (ans == 999999) {
@@ -98,7 +98,7 @@ int main() {
 2206.  
 https://www.acmicpc.net/problem/2206
  
- 3Â÷¿ø ¹è¿­À» ¾´´Ù´Â°Å ÀÚÃ¼°¡. ¸ğµç 1ÀÌ¶ó´Â º®¿¡ ´ëÇØ¼­ ºÎ¼ö±â¸¦ ÇØº»´Ù´Â °ÅÀİ¾Æ?
- ±×·¯´Ï±î ¾î´À º®À» ºÎ¼ú Áö. ¸¸¾à ÀÌ°Ô 1ÀÌ¶ó¸é, ±×°Å¿¡ ÇØ´çÇÏ´Â BFS¸¦ ÇØº¸´Â°ÅÁö
+ 3ì°¨ì› ë°°ì—´ì„ ì“´ë‹¤ëŠ”ê±° ìì²´ê°€. ëª¨ë“  1ì´ë¼ëŠ” ë²½ì— ëŒ€í•´ì„œ ë¶€ìˆ˜ê¸°ë¥¼ í•´ë³¸ë‹¤ëŠ” ê±°ì–ì•„?
+ ê·¸ëŸ¬ë‹ˆê¹Œ ì–´ëŠ ë²½ì„ ë¶€ìˆ  ì§€. ë§Œì•½ ì´ê²Œ 1ì´ë¼ë©´, ê·¸ê±°ì— í•´ë‹¹í•˜ëŠ” BFSë¥¼ í•´ë³´ëŠ”ê±°ì§€
 
 */
