@@ -34,7 +34,7 @@ int main() {
 					tag_flag = 1;
 					reverse_str[idx] = str[i];
 					idx++;
-				}//앞이 tag였던 경우
+				}//앞이 word였던 경우
 				else {
 					tag_flag = 1;
 					reverse_str[idx] = str[i];
