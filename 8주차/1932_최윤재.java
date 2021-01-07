@@ -1,24 +1,25 @@
 package week8;
 import java.io.*;
-public class _1932_ÃÖÀ±Àç {
+public class _1932_ìµœìœ¤ì¬ {
 	
 	static int triangle[][];
 	
 	public static void main(String[] args) throws IOException{
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-		int height = Integer.parseInt(bf.readLine());									//»ï°¢Çü ³ôÀÌ
-		triangle=new int[height][height];												//°¢ ¼ıÀÚ °ª ÀúÀå
+		int height = Integer.parseInt(bf.readLine());									//ì‚¼ê°í˜• ë†’ì´
+		triangle=new int[height][height];												//ê° ìˆ«ì ê°’ ì €ì¥
 		
-		for(int i=0; i<height; i++) {													//ÀÔ·Â¹Ş±â. ¹è¿­¿¡ ¶ç¾î¾²±â¸¦ ±âÁØÀ¸·Î splitÇÏ¿© ³ÖÀ½
+		for(int i=0; i<height; i++) {													//ì…ë ¥ë°›ê¸°. ë°°ì—´ì— ë„ì–´ì“°ê¸°ë¥¼ ê¸°ì¤€ìœ¼ë¡œ splití•˜ì—¬ ë„£ìŒ
 			String[] tmp =bf.readLine().split(" ");
 			for(int j=0; j<tmp.length; j++) triangle[i][j]=Integer.parseInt(tmp[j]);
 		}
 		
-		for(int i=height-2; i>=0; i--) {												//¾Æ·¡¿¡¼­ À§·Î ¿Ã¶ó°¡¸ç °ª °è»ê
-			for(int j=0; j<i+1; j++) {													//3Çà 3¿­ÀÌ¸é 4Çà3¿­°ú 4Çà 4¿­ °ª Áß ´õ Å« °ª°ú ÀÚ½ÅÀÇ °ªÀ» ÇÕÇÑ °á°ú¸¦ ÀúÀå
+		for(int i=height-2; i>=0; i--) {												//ì•„ë˜ì—ì„œ ìœ„ë¡œ ì˜¬ë¼ê°€ë©° ê°’ ê³„ì‚°
+			for(int j=0; j<i+1; j++) {													//3í–‰ 3ì—´ì´ë©´ 4í–‰3ì—´ê³¼ 4í–‰ 4ì—´ ê°’ ì¤‘ ë” í° ê°’ê³¼ ìì‹ ì˜ ê°’ì„ í•©í•œ ê²°ê³¼ë¥¼ ì €ì¥
 				triangle[i][j]=Math.max(triangle[i+1][j],triangle[i+1][j+1])+triangle[i][j];
 			}
 		}
-		System.out.println(triangle[0][0]);												//(0,0)¿¡ ÃÖÁ¾ °á°ú ÀÖÀ¸¹Ç·Î Ãâ·Â
+		System.out.println(triangle[0][0]);												//(0,0)ì— ìµœì¢… ê²°ê³¼ ìˆìœ¼ë¯€ë¡œ ì¶œë ¥
 	}
 }
+
