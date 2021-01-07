@@ -1,6 +1,6 @@
 package week8;
 import java.util.*;
-public class _9251_ìµœìœ¤ì¬ {
+public class _9251_ÃÖÀ±Àç {
 	
 	static int[][] dp;
 		
@@ -9,15 +9,15 @@ public class _9251_ìµœìœ¤ì¬ {
 		
 		String input1=sc.nextLine();
 		String input2=sc.nextLine();
-/////////////////////////////////////////////////////////////////////////ì…ë ¥
+/////////////////////////////////////////////////////////////////////////ÀÔ·Â
 		
-		dp=new int[input1.length()+1][input2.length()+1];			//ê° ë¬¸ìì—´ì˜ ê¸¸ì´ë³´ë‹¤ 1ì”© í¬ê²Œ dp ë°°ì—´ ìƒì„±
+		dp=new int[input1.length()+1][input2.length()+1];			//°¢ ¹®ÀÚ¿­ÀÇ ±æÀÌº¸´Ù 1¾¿ Å©°Ô dp ¹è¿­ »ı¼º
 		
 		
-		for(int i=0; i<input1.length(); i++) {						//ì•ì˜ ê°’ë“¤ì„ ë¹„êµí•˜ì—¬ ë’· ê°’ ì±„ì›€
+		for(int i=0; i<input1.length(); i++) {						//¾ÕÀÇ °ªµéÀ» ºñ±³ÇÏ¿© µŞ °ª Ã¤¿ò
 			for(int j=0; j<input2.length(); j++) {
-				if(input1.charAt(i)==input2.charAt(j)) dp[i+1][j+1]=dp[i][j]+1;		//ê°’ë“¤ì´ ê°™ì€ ê²½ìš° ëŒ€ê°ì„  ìœ„ì¹˜ ì¹¸ì˜ ê°’ì€ í˜„ì¬ì¹¸ ê°’ +1
-				else dp[i+1][j+1]=Math.max(dp[i][j+1], dp[i+1][j]);					//ê°’ì´ ë‹¤ë¥¸ ê²½ìš° ëŒ€ê°ì„  ìœ„ì¹˜ ì¹¸ì˜ ê°’ì€ ìœ„ë‚˜ ì˜† ê°’ ì¤‘ í° ê°’ ê·¸ëŒ€ë¡œ
+				if(input1.charAt(i)==input2.charAt(j)) dp[i+1][j+1]=dp[i][j]+1;		//°ªµéÀÌ °°Àº °æ¿ì ´ë°¢¼± À§Ä¡ Ä­ÀÇ °ªÀº ÇöÀçÄ­ °ª +1
+				else dp[i+1][j+1]=Math.max(dp[i][j+1], dp[i+1][j]);					//°ªÀÌ ´Ù¸¥ °æ¿ì ´ë°¢¼± À§Ä¡ Ä­ÀÇ °ªÀº À§³ª ¿· °ª Áß Å« °ª ±×´ë·Î
 			}
 		}
 		System.out.println(dp[input1.length()][input2.length()]);
@@ -25,6 +25,6 @@ public class _9251_ìµœìœ¤ì¬ {
 }
 
 
- 
+
 
 //LCS
