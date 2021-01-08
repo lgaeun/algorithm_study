@@ -15,7 +15,7 @@ public class Main{
 		//초기값 
 		dp[1] = arr[1];
 		dp[2] = arr[2]+dp[1];		
-		
+		//전계단 밟는 경우, 전전계단 밟는 경우
 		for(int i = 3; i <= n; i++) 
 			dp[i] = max(dp[i-3] + arr[i] + arr[i-1], dp[i-2] + arr[i]);
 		
