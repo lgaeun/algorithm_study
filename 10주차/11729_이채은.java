@@ -16,7 +16,7 @@ public class Main{
         bw.flush();
         bw.close();
         sc.close();
-    }
+    } //시간 초과 때문에 BufferedWriter를 사용했는데, StringBuilder가 더 빨랐음
     
     static void hanoi(int num, String from, String tmp, String to) throws IOException{
         if(num==1){
