@@ -1,7 +1,7 @@
 package week10;
 import java.io.*;
 import java.util.*;
-public class _2293_ÃÖÀ±Àç {
+public class _2293_ìµœìœ¤ì¬ {
 
 	static int[] value;
 	static int[] dp;
@@ -11,21 +11,21 @@ public class _2293_ÃÖÀ±Àç {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		int num = Integer.parseInt(st.nextToken());
 		int target = Integer.parseInt(st.nextToken());
-		value = new int[num];										//µ¿ÀüÀÇ ¾×¼ö ÀúÀå
-		dp = new int[target+1];										//°¢ ±İ¾×º° °¡´ÉÇÑ °æ¿ì ¼ö ÀúÀå (dp[1000]ÀÌ¸é 1000¿øÀ» ¸¸µé ¼ö ÀÖ´Â °æ¿ìÀÇ ¼ö)
+		value = new int[num];										//ë™ì „ì˜ ì•¡ìˆ˜ ì €ì¥
+		dp = new int[target+1];										//ê° ê¸ˆì•¡ë³„ ê°€ëŠ¥í•œ ê²½ìš° ìˆ˜ ì €ì¥ (dp[1000]ì´ë©´ 1000ì›ì„ ë§Œë“¤ ìˆ˜ ìˆëŠ” ê²½ìš°ì˜ ìˆ˜)
 		for(int i=0; i<num; i++) {
 			value[i] = Integer.parseInt(br.readLine());
 		}
-		///////////////////////////////////////////////////////////ÀÔ·Â
+		///////////////////////////////////////////////////////////ì…ë ¥
 
 		
-		for(int i=0; i<num; i++) {									//°¢ µ¿Àüº°·Î ¼öÇà
-			if (value[i] <= target) dp[value[i]] += 1;				//µü µ¿Àü ÇÏ³ª·Î ÇØ´ç ±İ¾×À» ¸¸µå´Â °æ¿ì 1°¡Áö¸¦ ¿ì¼± ´õÇÔ. (ÃÑ¾×º¸´Ù µ¿Àü ±İ¾×ÀÌ Å« °æ¿ì°¡ ÀÖ±â ¶§¹®¿¡ Á¶°Ç¹® ¾È¾²¸é ·±Å¸ÀÓ ¿¡·¯³²)
-			for(int j = value[i]+1; j<=target; j++) {				//ÇØ´ç µ¿Àü ¾×¼ö¸¸Å­ ºüÁø °ªÀ» ´õÇÏ¸é ±× µ¿ÀüÀ» Æ÷ÇÔÇßÀ» ¶§ °³¼ö ±¸ÇÒ ¼ö ÀÖÀ½
+		for(int i=0; i<num; i++) {									//ê° ë™ì „ë³„ë¡œ ìˆ˜í–‰
+			if (value[i] <= target) dp[value[i]] += 1;				//ë”± ë™ì „ í•˜ë‚˜ë¡œ í•´ë‹¹ ê¸ˆì•¡ì„ ë§Œë“œëŠ” ê²½ìš° 1ê°€ì§€ë¥¼ ìš°ì„  ë”í•¨. (ì´ì•¡ë³´ë‹¤ ë™ì „ ê¸ˆì•¡ì´ í° ê²½ìš°ê°€ ìˆê¸° ë•Œë¬¸ì— ì¡°ê±´ë¬¸ ì•ˆì“°ë©´ ëŸ°íƒ€ì„ ì—ëŸ¬ë‚¨)
+			for(int j = value[i]+1; j<=target; j++) {				//í•´ë‹¹ ë™ì „ ì•¡ìˆ˜ë§Œí¼ ë¹ ì§„ ê°’ì„ ë”í•˜ë©´ ê·¸ ë™ì „ì„ í¬í•¨í–ˆì„ ë•Œ ê°œìˆ˜ êµ¬í•  ìˆ˜ ìˆìŒ
 				dp[j] += dp[j - value[i]];
 			}
 		}
 		System.out.println(dp[target]);
 	}
-
+ã…‡
 }
