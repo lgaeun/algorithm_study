@@ -24,8 +24,7 @@ public class Main {
 					cheeze++; //전체 치즈 개수 세기
 			}
 		}
-
-		while(cheeze!=0) {
+		while(cheeze!=0) { //치즈가 다 녹아서 없어지면 종료
 			hour++;
 			cnt = cheeze; // 남아있는 치즈 개수 
 			bfs();	//가장자리 치즈 찾아내서 녹이기 
@@ -50,7 +49,7 @@ public class Main {
 					map[nx][ny] = 0;	//치즈 녹이기 
 					cheeze--;
 				}
-				else if(map[nx][ny] == 0) {
+				else if(map[nx][ny] == 0) {	//공기인 부분을 큐에 추가해서 탐색하기
 					q.offer(new Pair(nx,ny));
 				}
 				visit[nx][ny] = true;
@@ -58,7 +57,7 @@ public class Main {
 		}
 	}
 	
-	static class Pair{
+	static class Pair{   //map 상의 좌표
 		private int x,y;
 		public Pair(int x, int y) {
 			this.x = x;
