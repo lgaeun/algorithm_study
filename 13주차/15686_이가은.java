@@ -38,6 +38,14 @@ public class Main {
 				selected[i] = true;
 				choose(i+1, cnt+1);
 				selected[i] = false;
+			
+		      	/*맨 처음에 작성했던 코드 - 에러는 없지만 중복이 많아서 실행시간 아주 길었음
+			* selected = ArrayList
+			*/
+			//choose(i+1,cnt);
+			//selected.add(chicken.get(idx));
+			//choose(i+1, cnt+1);
+			//selected.remove(cnt);
 		}
 	}
 	static void calc() {	//선택된 치킨집과의 치킨거리 계산
