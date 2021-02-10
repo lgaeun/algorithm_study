@@ -39,11 +39,11 @@ public class Main {
 				choose(i+1, cnt+1);
 				selected[i] = false;
 			
-		      	/*맨 처음에 작성했던 코드 - 에러는 없지만 중복이 많아서 실행시간 아주 길었음
+		      	/*맨 처음에 작성했던 코드 - 중복 많음, 실행시간 아주 긺
 			* selected = ArrayList
 			*/
 			//choose(i+1,cnt);
-			//selected.add(chicken.get(idx));
+			//selected.add(chicken.get(idx));  -> selected.add(chicken.get(i)); //중복제거
 			//choose(i+1, cnt+1);
 			//selected.remove(cnt);
 		}
