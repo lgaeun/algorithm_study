@@ -1,7 +1,7 @@
 package week13;
 import java.util.*;
 import java.io.*;
-public class _4485_ÃÖÀ±Àç_³ì»ö¿ÊÀÔÀº¾Ö°¡Á©´ÙÁö {
+public class _4485_ìµœìœ¤ì¬_ë…¹ìƒ‰ì˜·ì…ì€ì• ê°€ì ¤ë‹¤ì§€ {
 
 	static int[] axis_x = {0, 0, -1, 1};
 	static int[] axis_y = {-1, 1, 0, 0};
@@ -16,7 +16,7 @@ public class _4485_ÃÖÀ±Àç_³ì»ö¿ÊÀÔÀº¾Ö°¡Á©´ÙÁö {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st;
 		width = Integer.parseInt(br.readLine());
-		while(width != 0) {										//ÀÔ·ÂÀÌ 0ÀÏ ¶§±îÁö
+		while(width != 0) {										//ì…ë ¥ì´ 0ì¼ ë•Œê¹Œì§€
 			testcase++;
 			map = new int[width][width];
 			dp = new int[width][width];
@@ -27,16 +27,16 @@ public class _4485_ÃÖÀ±Àç_³ì»ö¿ÊÀÔÀº¾Ö°¡Á©´ÙÁö {
 					map[i][j] = Integer.parseInt(st.nextToken());
 				}
 			}
-			//////////////////////////////////////////////////////////ÀÔ·Â
+			//////////////////////////////////////////////////////////ì…ë ¥
 			dp[0][0] = map[0][0];								
-			PriorityQueue<Node> pqueue = new PriorityQueue<>();		//¿ì¼±¼øÀ§ Å¥ ÀÌ¿ë
+			PriorityQueue<Node> pqueue = new PriorityQueue<>();		//ìš°ì„ ìˆœìœ„ í ì´ìš©
 			pqueue.add(new Node(0,0,map[0][0]));
 			visited[0][0] = true;
 			while(!pqueue.isEmpty()) {
 				Node loc = pqueue.poll();
-				if(!visited[loc.y][loc.x] || dp[loc.y][loc.x] > loc.weight) dp[loc.y][loc.x] = loc.weight;	//¾ÆÁ÷ ¹æ¹® ¾ÈÇÑ Ä­ÀÌ°Å³ª »õ °ªÀÌ ¿ø·¡ °ªº¸´Ù ÀÛÀº °æ¿ì °ª ¾÷µ¥ÀÌÆ®
-				visited[loc.y][loc.x] = true;						//¹æ¹®Ã³¸®
-				for(int i=0; i<4; i++) {							//»óÇÏÁÂ¿ì È®ÀÎ
+				if(!visited[loc.y][loc.x] || dp[loc.y][loc.x] > loc.weight) dp[loc.y][loc.x] = loc.weight;	//ì•„ì§ ë°©ë¬¸ ì•ˆí•œ ì¹¸ì´ê±°ë‚˜ ìƒˆ ê°’ì´ ì›ë˜ ê°’ë³´ë‹¤ ì‘ì€ ê²½ìš° ê°’ ì—…ë°ì´íŠ¸
+				visited[loc.y][loc.x] = true;						//ë°©ë¬¸ì²˜ë¦¬
+				for(int i=0; i<4; i++) {						//ìƒí•˜ì¢Œìš° í™•ì¸
 					int next_y = loc.y + axis_y[i];
 					int next_x = loc.x + axis_x[i];
 					if(check(next_y, next_x)) pqueue.add(new Node(next_y, next_x, loc.weight + map[next_y][next_x]));
