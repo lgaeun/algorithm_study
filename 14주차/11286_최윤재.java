@@ -1,48 +1,48 @@
 package week14;
 import java.util.*;
 import java.io.*;
-public class _11286_ÃÖÀ±Àç_Àı´ñ°ªÈü {	
+public class _11286_ìµœìœ¤ì¬_ì ˆëŒ“ê°’í™ {	
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		int num = Integer.parseInt(br.readLine());							//ÃÑ °³¼ö
-		Queue<Number> heap = new PriorityQueue<>();							//¿ì¼±¼øÀ§ Å¥ ÀÌ¿ë
+		int num = Integer.parseInt(br.readLine());							//ì´ ê°œìˆ˜
+		Queue<Number> heap = new PriorityQueue<>();							//ìš°ì„ ìˆœìœ„ í ì´ìš©
 		
-		for(int i=0; i<num; i++) {											//ÀÔ·Â
+		for(int i=0; i<num; i++) {											//ì…ë ¥
 			int tmp = Integer.parseInt(br.readLine());
 			if(tmp == 0) {
-				if (heap.isEmpty()) bw.write("0\n");						//ÈüÀÌ ºñ¾úÀ» ¶§
+				if (heap.isEmpty()) bw.write("0\n");						//í™ì´ ë¹„ì—ˆì„ ë•Œ
 				else {
-					Number number = heap.poll();							//°¡Àå Àı´ñ°ªÀÌ ÀÛÀº ¼ö poll
+					Number number = heap.poll();							//ê°€ì¥ ì ˆëŒ“ê°’ì´ ì‘ì€ ìˆ˜ poll
 					int value = 0;
-					if (number.isPositive == 1) value = number.value;		//isPositive°¡ 1ÀÎ °æ¿ì, Áï ¾ç¼öÀÎ °æ¿ì´Â ±×³É ±× °ª
-					else value = -number.value;								//À½¼öÀÎ °æ¿ì´Â -¸¦ ºÙÀÎ °ª
-					bw.write(value+"\n");									//°á°ú Ãâ·Â
+					if (number.isPositive == 1) value = number.value;		//isPositiveê°€ 1ì¸ ê²½ìš°, ì¦‰ ì–‘ìˆ˜ì¸ ê²½ìš°ëŠ” ê·¸ëƒ¥ ê·¸ ê°’
+					else value = -number.value;								//ìŒìˆ˜ì¸ ê²½ìš°ëŠ” -ë¥¼ ë¶™ì¸ ê°’
+					bw.write(value+"\n");									//ê²°ê³¼ ì¶œë ¥
 				}
 			}
 			else {
-				int isPositive = 0;											//»õ·Î¿î ¼ıÀÚ¸¦ heap¿¡ ³Ö´Â °æ¿ì
-				if (tmp > 0) isPositive = 1;								//»õ·Î µé¾î¿î ¼ıÀÚ°¡ ¾ç¼öÀÎ °æ¿ì isPositive¸¦ 1·Î ¼³Á¤
-				else isPositive = -1;										//À½¼öÀÎ °æ¿ì isPositive¸¦ -1·Î ¼³Á¤
-				heap.add(new Number(Math.abs(tmp), isPositive));			//°á°ú heap¿¡ ÀúÀå
+				int isPositive = 0;											//ìƒˆë¡œìš´ ìˆ«ìë¥¼ heapì— ë„£ëŠ” ê²½ìš°
+				if (tmp > 0) isPositive = 1;								//ìƒˆë¡œ ë“¤ì–´ìš´ ìˆ«ìê°€ ì–‘ìˆ˜ì¸ ê²½ìš° isPositiveë¥¼ 1ë¡œ ì„¤ì •
+				else isPositive = -1;										//ìŒìˆ˜ì¸ ê²½ìš° isPositiveë¥¼ -1ë¡œ ì„¤ì •
+				heap.add(new Number(Math.abs(tmp), isPositive));			//ê²°ê³¼ heapì— ì €ì¥
 			}
 		}
 		bw.flush();
 		bw.close();
-	}
+	} 
 
 }
 
-class Number implements Comparable<Number>{				//heap¿¡ ³ÖÀ» °´Ã¼. ¼ıÀÚÀÇ Àı´ë°ª°ú À½¼ö/¾ç¼ö¸¦ Ç¥½ÃÇÏ´Â °ªÀ» º¯¼ö·Î °¡Áü
+class Number implements Comparable<Number>{				//heapì— ë„£ì„ ê°ì²´. ìˆ«ìì˜ ì ˆëŒ€ê°’ê³¼ ìŒìˆ˜/ì–‘ìˆ˜ë¥¼ í‘œì‹œí•˜ëŠ” ê°’ì„ ë³€ìˆ˜ë¡œ ê°€ì§
 	int value;
 	int isPositive;
 	Number(int value, int isPositive){
 		this.value = value;
 		this.isPositive = isPositive;
 	}
-	public int compareTo(Number another) {				//heap³»¿¡¼­ Á¤·ÄÀº value°¡ ÀÛÀº°ªºÎÅÍ. value°¡ °°À¸¸é is Positive¸¦ ÀÌ¿ëÇØ À½¼öºÎÅÍ
+	public int compareTo(Number another) {				//heapë‚´ì—ì„œ ì •ë ¬ì€ valueê°€ ì‘ì€ê°’ë¶€í„°. valueê°€ ê°™ìœ¼ë©´ is Positiveë¥¼ ì´ìš©í•´ ìŒìˆ˜ë¶€í„°
 		if (this.value == another.value) {
 			return this.isPositive - another.isPositive;
 		}
