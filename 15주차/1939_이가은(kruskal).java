@@ -10,10 +10,10 @@ public class Main {
 			this.u = u; this.v = v; this.weight = weight;
 		}
 		
-		public int compareTo(Edge o) {
-			if(this.weight < o.weight) return -1;
+		public int compareTo(Edge o) {	//최대스패닝트리 
+			if(this.weight < o.weight) return 1;
 			else if (this.weight == o.weight) return 0;
-			else return 1;
+			else return -1;
 		}
 	}
 	static void union(int v1, int v2) {
@@ -25,7 +25,7 @@ public class Main {
 		if(v == parent[v]) return v;
 		return parent[v] = find(parent[v]);
 	}
-    static int[] parent;
+    	static int[] parent;
     
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -48,15 +48,16 @@ public class Main {
 		int start = Integer.parseInt(st.nextToken());
 		int end = Integer.parseInt(st.nextToken());
 		
-		Collections.sort(list); 	//중량을 기준으로 정렬
+		Collections.sort(list); //중량을 기준으로 정렬
 		
 		//Kruskal
 		int cost = 0;
 		for(Edge edge: list) {
-			union(edge.u, edge.v); 
-			if(find(start) == find(end)) cost = edge.weight;	
+			if(find(start) != find(end)) {
+				union(edge.u, edge.v);
+				cost = edge.weight;	
+			}
 		}
 		System.out.println(cost);
 	}
-
 }
