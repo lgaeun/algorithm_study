@@ -40,7 +40,7 @@ public class Main {
 				else
 					ans += w + Math.min(loc[i].y + loc[n].y, 2*h - loc[n].y - loc[i].y);  //동근이가 동,서 일때 
 			}
-			else ans += Math.abs(loc[i].x - loc[n].x) + Math.abs(loc[i].y - loc[n].y);
+			else   ans += Math.abs(loc[i].x - loc[n].x) + Math.abs(loc[i].y - loc[n].y);
 		}
 		System.out.println(ans);
 	}
