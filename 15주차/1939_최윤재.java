@@ -11,14 +11,14 @@ class Link{
 	}
 }
 
-public class _1939_ÃÖÀ±Àç_Áß·®Á¦ÇÑ {
+public class _1939_ìµœìœ¤ì¬_ì¤‘ëŸ‰ì œí•œ {
 	
-	static int island;						//¼¶ °³¼ö
-	static int bridge_num;					//´Ù¸® °³¼ö
-	static ArrayList<Link>[] bridge;		//´Ù¸® ¹è¿­
-	static int factory1;					//Ãâ¹ßÁöÁ¡
-	static int factory2;					//µµÂøÁöÁ¡
-	static int max;							//ÀÌºĞÅ½»ö¶§ ¾µ °¡Àå Å« °ª (right)
+	static int island;						//ì„¬ ê°œìˆ˜
+	static int bridge_num;					//ë‹¤ë¦¬ ê°œìˆ˜
+	static ArrayList<Link>[] bridge;		//ë‹¤ë¦¬ ë°°ì—´
+	static int factory1;					//ì¶œë°œì§€ì 
+	static int factory2;					//ë„ì°©ì§€ì 
+	static int max;							//ì´ë¶„íƒìƒ‰ë•Œ ì“¸ ê°€ì¥ í° ê°’ (right)
 	static int result;
 	
 	public static void main(String[] args) throws IOException {
@@ -28,9 +28,9 @@ public class _1939_ÃÖÀ±Àç_Áß·®Á¦ÇÑ {
 		bridge_num = Integer.parseInt(st.nextToken());
 		bridge = new ArrayList[island];
 		
-		for(int i=0; i<island; i++) bridge[i] = new ArrayList<>();		//ArrayList °´Ã¼ ¸¸µé¾îÁÜ
+		for(int i=0; i<island; i++) bridge[i] = new ArrayList<>();		//ArrayList ê°ì²´ ë§Œë“¤ì–´ì¤Œ
 		
-		for(int i=0; i<bridge_num; i++) {					//ÀÔ·Â
+		for(int i=0; i<bridge_num; i++) {					//ì…ë ¥
 			st = new StringTokenizer(br.readLine());
 			int from = Integer.parseInt(st.nextToken())-1;
 			int to = Integer.parseInt(st.nextToken())-1;
@@ -42,39 +42,39 @@ public class _1939_ÃÖÀ±Àç_Áß·®Á¦ÇÑ {
 		st = new StringTokenizer(br.readLine());
 		factory1 = Integer.parseInt(st.nextToken())-1;
 		factory2 = Integer.parseInt(st.nextToken())-1;
-		////////////////////////////////////////////////////////////////ÀÔ·Â
+		////////////////////////////////////////////////////////////////ì…ë ¥
 		
-		int left = 1;									//ÃÖ¼Ò°ª
-		int right = max;								//ÃÖ´ë°ª
-		while(left <= right) {							//ÀÌºĞÅ½»ö
-			int mid = (left+right)/2;					//Áß°£°ª
-			boolean[] visited = new boolean[island];	//¹æ¹®¿©ºÎ Ã³¸®
-			if(dfs(factory1, mid, visited)) {			//ÇØ´ç mid°ªÀ» weight·Î µ×À» ¶§ °¡´ÉÇÏ¸é
-				left = mid+1;							//mid°ªÀ» ´õ Å°¿ö¼­ ¶Ç Å½»ö
+		int left = 1;									//ìµœì†Œê°’
+		int right = max;								//ìµœëŒ€ê°’
+		while(left <= right) {							//ì´ë¶„íƒìƒ‰
+			int mid = (left+right)/2;					//ì¤‘ê°„ê°’
+			boolean[] visited = new boolean[island];	//ë°©ë¬¸ì—¬ë¶€ ì²˜ë¦¬
+			if(dfs(factory1, mid, visited)) {			//í•´ë‹¹ midê°’ì„ weightë¡œ ë’€ì„ ë•Œ ê°€ëŠ¥í•˜ë©´
+				left = mid+1;							//midê°’ì„ ë” í‚¤ì›Œì„œ ë˜ íƒìƒ‰
 				result = mid;
 			}
-			else {										//mid°ªÀ» weight·Î µ×À» ¶§ ºÒ°¡´É ÇÏ¸é
-				right = mid-1;							//mid°ªÀ» ´õ ÁÙ¿©¼­ Å½»ö
+			else {										//midê°’ì„ weightë¡œ ë’€ì„ ë•Œ ë¶ˆê°€ëŠ¥ í•˜ë©´
+				right = mid-1;							//midê°’ì„ ë” ì¤„ì—¬ì„œ íƒìƒ‰
 			}
 		}
 		
 		System.out.println(result);
 		
 	}
-	public static boolean dfs(int loc, int weight, boolean[] visited) {	//ÇØ´ç weight·Î °¡´ÉÇÑÁö È®ÀÎÇÏ±â À§ÇØ dfs ÀÌ¿ë
-		if(visited[loc]) return false;					//ÀÌ¹Ì Å½»öÇÑ ¼¶ÀÏ ¶§´Â false¸¦ return (ºÒ°¡´ÉÇÑ °æ¿ì)
+	public static boolean dfs(int loc, int weight, boolean[] visited) {	//í•´ë‹¹ weightë¡œ ê°€ëŠ¥í•œì§€ í™•ì¸í•˜ê¸° ìœ„í•´ dfs ì´ìš©
+		if(visited[loc]) return false;					//ì´ë¯¸ íƒìƒ‰í•œ ì„¬ì¼ ë•ŒëŠ” falseë¥¼ return (ë¶ˆê°€ëŠ¥í•œ ê²½ìš°)
 		visited[loc] = true;
 		
-		if (loc == factory2) {							//µµÂøÁöÁ¡ ¿ÔÀ» ¶§´Â true¸¦ return
+		if (loc == factory2) {							//ë„ì°©ì§€ì  ì™”ì„ ë•ŒëŠ” trueë¥¼ return
 			return true;
 		}
-		for(int i=0; i<bridge[loc].size(); i++) {		//´ÙÀ½ ¼¶ ¾îµğ·Î °¥Áö °áÁ¤
+		for(int i=0; i<bridge[loc].size(); i++) {		//ë‹¤ìŒ ì„¬ ì–´ë””ë¡œ ê°ˆì§€ ê²°ì •
 			Link tmp = bridge[loc].get(i);
-			if(tmp.weight >= weight) {					//´Ù¸®°¡ ¹öÆ¿ ¼ö ÀÖ´Â ¹«°Ô°¡ weightº¸´Ù Ä¿¾ßÇÔ
+			if(tmp.weight >= weight) {					//ë‹¤ë¦¬ê°€ ë²„í‹¸ ìˆ˜ ìˆëŠ” ë¬´ê²Œê°€ weightë³´ë‹¤ ì»¤ì•¼í•¨
 				if(dfs(tmp.dest, weight, visited)) return true;
 			}
 		}
 		return false;
 	}
 
-}
+} 
