@@ -43,20 +43,18 @@ public class Main {
 				ans = mid;
 				low = mid + 1;
 			}
-			else
-				high = mid - 1;	
+			else	high = mid - 1;	
 		}
 		System.out.println(ans);
 
 	}
-	static boolean bfs(int weight) {	//중량제한을 견딜 수 있는 다리만 이용해서 endNode에 도착가능한지 체크 
+	static boolean bfs(int weight) {   //중량제한을 견딜 수 있는 다리만 이용해서 endNode에 도착가능한지 체크 
 		Queue<Integer> q = new LinkedList<>();
 		q.add(startNode);
 		visit[startNode] = true;
 		while(!q.isEmpty()) {
 			int cur = q.poll();
 			if(cur == endNode) return true;
-			
 			for(Point next : list[cur]) {
 				if(!visit[next.x] && next.y >= weight) {
 					q.add(next.x);
