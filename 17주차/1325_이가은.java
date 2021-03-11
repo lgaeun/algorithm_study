@@ -34,7 +34,7 @@ public class Main {
 		int max = 0;
 		for (int i = 1; i <= n; i++) max = Math.max(max, hack[i]); //최대로 해킹할 수 있는 컴퓨터의 max 구하기
 		
-		for(int i = 1; i <= n; i++) if(hack[i] == max) sb.append(i+" "); //max값과 같은 컴퓨터 번호 출력 
+		for(int i = 1; i <= n; i++) if(hack[i] == max) sb.append(i+" "); //max값과 같은 컴퓨터 번호 출력(중복 처리)
 		
 		System.out.println(sb.toString());
 	}
