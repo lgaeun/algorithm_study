@@ -23,7 +23,7 @@ public class Main {
 			System.out.println("-1");
 			return;
 		}
-    else {
+    		else {
 			for(int i = 0; i <= 3; i++) { //최대 3개까지 더 추가할 수 있음
 				if (dfs(0,0,0,i)) return;
 			}
