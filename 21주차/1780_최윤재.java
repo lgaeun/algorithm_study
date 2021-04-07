@@ -1,13 +1,13 @@
 package tmp;
 import java.io.*;
 import java.util.*;
-public class _1780_ÃÖÀ±Àç_Á¾ÀÌÀÇ°³¼ö {
+public class _1780_ìµœìœ¤ì¬_ì¢…ì´ì˜ê°œìˆ˜ {
 
-	static int width;	//ÃÑ ³ĞÀÌ
+	static int width;	//ì´ ë„“ì´
 	static int[][] map;	
-	static int one;		//1ÀÎ Á¾ÀÌ
-	static int zero;	//0ÀÎ Á¾ÀÌ
-	static int minus;	//-1ÀÎ Á¾ÀÌ
+	static int one;		//1ì¸ ì¢…ì´
+	static int zero;	//0ì¸ ì¢…ì´
+	static int minus;	//-1ì¸ ì¢…ì´
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -20,28 +20,29 @@ public class _1780_ÃÖÀ±Àç_Á¾ÀÌÀÇ°³¼ö {
 				map[i][j] = Integer.parseInt(st.nextToken());
 			}
 		}	
-		///////////////////////////////////////////////////////////////ÀÔ·Â
-		check(0, 0, width);			//ÀüÃ¼ ¸Ê¿¡ ´ëÇØ¼­ ¿ì¼± È®ÀÎ
-		System.out.println(minus);	//°á°ú Ãâ·Â
+		///////////////////////////////////////////////////////////////ì…ë ¥
+		check(0, 0, width);			//ì „ì²´ ë§µì— ëŒ€í•´ì„œ ìš°ì„  í™•ì¸
+		System.out.println(minus);	//ê²°ê³¼ ì¶œë ¥
 		System.out.println(zero);
 		System.out.println(one);
 	}
-	public static void check(int y, int x, int num) {	//½ÃÀÛÇÏ´Â y,xÁÂÇ¥¿Í ³Êºñ ¹ŞÀ½
-		int val = map[y][x];	//¸ğµÎ ÅëÀÏµÇ¾î¾ß ÇÏ´Â ±âÁØ °ª
+	public static void check(int y, int x, int num) {	//ì‹œì‘í•˜ëŠ” y,xì¢Œí‘œì™€ ë„ˆë¹„ ë°›ìŒ
+		int val = map[y][x];	//ëª¨ë‘ í†µì¼ë˜ì–´ì•¼ í•˜ëŠ” ê¸°ì¤€ ê°’
 		for(int i=y; i<y+num; i++) {
 			for(int j=x; j<x+num; j++) {
-				if (map[i][j] != val) {	//°°Àº Ä­ ³»¿¡ °°Áö ¾ÊÀº ¼ö°¡ ÀÖ´Â °æ¿ì
+				if (map[i][j] != val) {	//ê°™ì€ ì¹¸ ë‚´ì— ê°™ì§€ ì•Šì€ ìˆ˜ê°€ ìˆëŠ” ê²½ìš°
 					for(int k=y; k<y+num; k+=num/3) {
 						for(int l=x; l<x+num; l+=num/3) {
-							check(k, l, num/3);	//1/3 ³ÊºñÀÇ »ç°¢ÇüÀ» 9°³ ¸¸µé¾î Àç±ÍÀûÀ¸·Î checkÇÔ¼ö ÀÌ¿ë
+							check(k, l, num/3);	//1/3 ë„ˆë¹„ì˜ ì‚¬ê°í˜•ì„ 9ê°œ ë§Œë“¤ì–´ ì¬ê·€ì ìœ¼ë¡œ checkí•¨ìˆ˜ ì´ìš©
 						}
 					}
 					return;
 				}
 			}
 		}
-		if(val == -1) minus += 1;	//ÇØ´ç Ä­ÀÇ °ªÀÌ ¸ğµÎ µ¿ÀÏÇÏ´Ù°í ÆÇÁ¤µÈ °æ¿ì ÇØ´ç °ª¿¡ ¸Â°Ô º¯¼ö °ª ÇÏ³ª¾¿ ´Ã¸²
+		if(val == -1) minus += 1;	//í•´ë‹¹ ì¹¸ì˜ ê°’ì´ ëª¨ë‘ ë™ì¼í•˜ë‹¤ê³  íŒì •ëœ ê²½ìš° í•´ë‹¹ ê°’ì— ë§ê²Œ ë³€ìˆ˜ ê°’ í•˜ë‚˜ì”© ëŠ˜ë¦¼
 		else if(val==0) zero += 1;
 		else one += 1;
 	}
 }
+ 
