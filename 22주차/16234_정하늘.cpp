@@ -58,7 +58,7 @@ int main() {
 							q.pop();
 						}
 					}
-					if (q.size() == 1) q.pop();
+					if (q.size() == 1) q.pop();//이 코드 없을 경우, queue에 쌓여 size가 2를 넘어가버림. 변화가 있다고 간주.
 					cnt = 0;
 					sum = 0;
 				}
