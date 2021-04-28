@@ -21,7 +21,7 @@ int main() {
             if (truck[i] + cur <= L) break;
             q.push(0);
             cnt++;
-        }
+        } //다리 위에 트럭 올리기
         q.push(truck[i]);
         cur += truck[i];
         cnt++;
