@@ -21,7 +21,7 @@ public class Main{
             }
             else {
                 int t1, t2;
-                boolean palindrome = false;
+                boolean palindrome = false; //유사회문 체크
                 if(s[p1+1].equals(s[p2])) {
                 	t1 = p1+2; t2 = p2-1;
                 	palindrome = true;
