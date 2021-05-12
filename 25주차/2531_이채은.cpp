@@ -1,37 +1,27 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdbool.h>
 
-using namespace std;
-
-int N, max = 0;
-int arr[8], tmp[8];
-bool chk[8] = { false, };
-
-void calc() {
-    int val = 0;
-    for (int i = 0; i < N - 1; i++)
-        val += abs(tmp[i] - tmp[i + 1]);
-    if (max < val) max = val;
-}
-
-void solve(int cnt) {
-    if (cnt == N) {
-        calc(); return;
-    }
-    for (int i = 0; i < N; i++) {
-        if (chk[i] == true) continue;
-        tmp[cnt] = arr[i];
-        chk[i] = true;
-        solve(cnt + 1);
-        chk[i] = false;
-    }
-}
+int N, d, k, c;
+int arr[30000];
 
 int main() {
-    scanf("%d", &N);
+    scanf("%d%d%d%d", &N, &d, &k, &c);
     for (int i = 0; i < N; i++)
         scanf("%d", &arr[i]);
 
-    solve(0);
+    int max = 0;
+    for (int i = 0; i < N; i++) {
+        bool sushi[3001] = { false, };
+        int cur = k + 1;
+        for (int j = i; j < i + k; j++) {
+            int num = arr[j % N];
+            if (sushi[num] == true) {
+                cur--; continue;
+            }
+            sushi[num] = true;
+            if (num == c) cur--;
+        }
+        if (cur > max) max = cur;
+    }
     printf("%d", max);
 }
