@@ -4,9 +4,6 @@
 
 using namespace std;
 
-int getMax(int a, int b) {
-	return a >= b ? a : b;
-}
 
 string solution(string play_time, string adv_time, vector<string> logs) {
 	string answer = "";
@@ -56,9 +53,6 @@ string solution(string play_time, string adv_time, vector<string> logs) {
 			max = cum_time;
 		}
 	}
-
-	printf("start_time: %d\n", start_time);
-	printf("max: %d\n", max);
 
 	//변환
 	int hour_1 = start_time / 36000;
