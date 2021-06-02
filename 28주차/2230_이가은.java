@@ -16,13 +16,13 @@ public class Main {
 		while(back < N) {
 			int diff = arr[back] - arr[front];
 			if(diff < M){
-                back++;
-                continue;
-            } 
-            if(diff == M) {
-                min = M;
-                break;
-            }
+                	back++;
+                	continue;
+            		} 
+            		if(diff == M) {
+               	 		min = M;
+                		break;
+            		}
 			
 			front++;
 			if(diff < min) min = diff;
