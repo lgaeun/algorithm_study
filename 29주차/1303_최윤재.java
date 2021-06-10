@@ -50,20 +50,4 @@ public class _1303_최윤재_전쟁전투 {
 		if(y>=0 && y<height && x>=0 && x<width && !visited[y][x] && map[y][x] == color) return true;
 		return false;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
