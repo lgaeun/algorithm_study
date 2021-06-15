@@ -38,5 +38,5 @@ class Solution {
         res.append(num%60);
         
         return res.toString();
-    }
+    } //정답 형태로 변형
 }
