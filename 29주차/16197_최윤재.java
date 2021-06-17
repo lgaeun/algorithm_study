@@ -1,7 +1,7 @@
 package tmp;
 import java.io.*;
 import java.util.*;
-class Location{			//queue¿¡ ³ÖÀ» À§Ä¡
+class Location{			//queueì— ë„£ì„ ìœ„ì¹˜
 	int y;
 	int x;
 	int count;
@@ -11,7 +11,7 @@ class Location{			//queue¿¡ ³ÖÀ» À§Ä¡
 		this.count = count;
 	}
 }
-public class _16197_ÃÖÀ±Àç_µÎµ¿Àü {
+public class _16197_ìµœìœ¤ì¬_ë‘ë™ì „ {
 
 	static char[][] map;
 	static int height;
@@ -86,3 +86,4 @@ public class _16197_ÃÖÀ±Àç_µÎµ¿Àü {
 	}
 
 }
+ 
