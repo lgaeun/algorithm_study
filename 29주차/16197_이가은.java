@@ -1,12 +1,10 @@
-package week29;
-
 import java.io.*;
 import java.util.*;
 
-public class _16197 {
+public class Main {
 	
 	static char[][] map;
-	static int r, c, cnt = 11;
+	static int r, c, min = 11;
 	static int[] dx = {0,0,-1,1}, dy = {-1,1,0,0};
 	static ArrayList<int[]> coins = new ArrayList<>();
 
@@ -24,37 +22,43 @@ public class _16197 {
 				if(map[i][j] == 'o') coins.add(new int[] {i,j});
 			}
 		}
-		move(coins.get(0), coins.get(1), 0);
+		dfs(coins.get(0), coins.get(1), 0);
 		
-		if(cnt == 11) System.out.println("-1");
-		else System.out.println(cnt);
+		if(min == 11) System.out.println("-1");
+		else System.out.println(min);
 	}
 	
-	static void move(int[] front, int[] back, int depth) {
+	static void dfs(int[] front, int[] back, int depth) {
 		if(depth == 10) return;
 		
 		for(int i = 0; i < 4; i++) {
-			for(int j = 0; j < 2; j++) { 
-				int[] c = coins.get(j);
-				int nx = c[0] + dx[i];
-				int ny = c[1] + dy[i];
-				if(!check(new int[] {nx,ny}) && map[nx][ny] == '#') continue; //벽이면 그대로, 
-				else { //벽이 아니면 이동 
-					coins.get(j)[0] = nx; 
-					coins.get(j)[1] = ny;
-				}
+			int[] n1 = {front[0] + dx[i], front[1] + dy[i]}; // 새로운 좌표로 이동 
+			int[] n2 = {back[0] + dx[i], back[1] + dy[i]};
+			
+			boolean fst = check(n1);
+			boolean snd = check(n2);
+			
+			if(fst && snd) { //둘 다 이동할 수 있는 경우에만 
+				if(map[n1[0]][n1[1]] == '#') n1 = front; // 새로운 좌표로 이동 취소 
+				if(map[n2[0]][n2[1]] == '#') n2 = back;
+				
+				dfs(n1,n2,depth+1);
+			}
+			else if(fst || snd) {	// 둘 중 하나만 true이면 (=동전 하나만 떨어짐) 
+				min = Math.min(min, depth+1);
 			}
 			
-			if((check(coins.get(0)) && !check(coins.get(1))) || (check(coins.get(1))) && !check(coins.get(1))) {
-				cnt = Math.min(cnt, depth+1);
-				return;
-			}
+			// fst, snd로 check 한 번 만 해두고 이용하는 것이 더 효율적. 논리연산 위가 더 
+// 			if(fst && map[n1[0]][n1[1]] == '#') n1 = front;	// coin 이동 
+// 			if(snd && map[n2[0]][n2[1]] == '#') n2 = back;	
+// 			if((fst && !snd) || (!fst && snd)) min = Math.min(min, depth+1); //둘 중 하나만 true(=하나만 떨어짐) 
+// 			else if(fst && snd)dfs(n1,n2,depth+1);
 		}
 	
 	}
 	
 	static boolean check(int[] xy) {
-		return (xy[0] < 0 || xy[0] >= r || xy[1] < 0 || xy[1] >= c);
+		return xy[0] >= 0 && xy[0] < r && xy[1] >= 0 && xy[1] < c;
 	}
 
 }
