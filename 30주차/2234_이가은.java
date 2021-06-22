@@ -45,11 +45,11 @@ public class _2234 {
 		
 		//엣지로 연결된 두 노드의 합 중 최대값 구하기
 		for(int i = 0; i < sizes.size()/2 + 1; i++) {
-            	Iterator<Integer> iter = edge.get(i).iterator(); //hashset iterator 
-	        while( iter.hasNext() ){
-	            maxCombine = Math.max(maxCombine, sizes.get(i) + sizes.get(iter.next()) );
-	        }
-        }
+            	   Iterator<Integer> iter = edge.get(i).iterator(); //hashset iterator 
+	           while( iter.hasNext() ){
+	           	maxCombine = Math.max(maxCombine, sizes.get(i) + sizes.get(iter.next()) );
+	           }
+        	}
         
 		System.out.println(roomCnt+"\n" + maxSize +"\n" + maxCombine);
 	}
