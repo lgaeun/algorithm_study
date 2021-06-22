@@ -20,7 +20,7 @@ public class _2234 {
 		visit = new boolean[m][n];
 		ArrayList<Integer> sizes = new ArrayList<>();
     
-    for(int i = 0; i < n*m; i++) edge.add(new HashSet<>()); //hashset 초기화
+    		for(int i = 0; i < n*m; i++) edge.add(new HashSet<>()); //hashset 초기화
     
 		int maxSize = 0, roomCnt = 0, maxCombine = 0;
 		int roomIdx = 0;
@@ -45,7 +45,7 @@ public class _2234 {
 		
 		//엣지로 연결된 두 노드의 합 중 최대값 구하기
 		for(int i = 0; i < sizes.size()/2 + 1; i++) {
-            Iterator<Integer> iter = edge.get(i).iterator(); //hashset iterator 
+            	Iterator<Integer> iter = edge.get(i).iterator(); //hashset iterator 
 	        while( iter.hasNext() ){
 	            maxCombine = Math.max(maxCombine, sizes.get(i) + sizes.get(iter.next()) );
 	        }
