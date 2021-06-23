@@ -4,16 +4,16 @@ import java.util.LinkedList;
 
 class Solution {
     
-    static double[][] score;//[ÆäÀÌÁöÀÎµ¦½º][0]=±âº»Á¡¼ö, [ÆäÀÌÁöÀÎµ¦½º][1]=¸µÅ©Á¡¼ö
-    static String[] link;   //ÀÚ½ÅÀÇ ¸µÅ© string
-    static int[] outgoing;  //¿ÜºÎ ¸µÅ© °³¼ö
-    static LinkedList<String>[] outgoingLink;   //¿ÜºÎ ¸µÅ© ÁÖ¼Ò
-    static int answer = 0;	//ÃÖÁ¾ °á°ú
-    static double maxval = 0;	//°¡Àå Å« Á¡¼ö°ª(intÇÏ¸é Æ²¸².... ³ªµµ ¾Ë°í ½ÍÁö ¾Ê¾ÒÁö)
+    static double[][] score;//[í˜ì´ì§€ì¸ë±ìŠ¤][0]=ê¸°ë³¸ì ìˆ˜, [í˜ì´ì§€ì¸ë±ìŠ¤][1]=ë§í¬ì ìˆ˜
+    static String[] link;   //ìì‹ ì˜ ë§í¬ string
+    static int[] outgoing;  //ì™¸ë¶€ ë§í¬ ê°œìˆ˜
+    static LinkedList<String>[] outgoingLink;   //ì™¸ë¶€ ë§í¬ ì£¼ì†Œ
+    static int answer = 0;	//ìµœì¢… ê²°ê³¼
+    static double maxval = 0;	//ê°€ì¥ í° ì ìˆ˜ê°’(intí•˜ë©´ í‹€ë¦¼.... ë‚˜ë„ ì•Œê³  ì‹¶ì§€ ì•Šì•˜ì§€)
     
     public int solution(String word, String[] pages) {
         word = word.toLowerCase();
-        score = new double[pages.length][2];   //±âº»Á¡¼ö, ¸ÅÄªÁ¡¼ö
+        score = new double[pages.length][2];   //ê¸°ë³¸ì ìˆ˜, ë§¤ì¹­ì ìˆ˜
         link = new String[pages.length];
         outgoing = new int[pages.length];
         outgoingLink = new LinkedList[pages.length]; 
@@ -21,45 +21,45 @@ class Solution {
             String page = pages[i];
             int default_score = 0;
             page = page.toLowerCase();
-            //////////////////////////////////////////±âº» Á¡¼ö Ã£±â
-            int loc = page.indexOf(word);	//Ã£´Â wordÀÇ Ã¹ character index
+            //////////////////////////////////////////ê¸°ë³¸ ì ìˆ˜ ì°¾ê¸°
+            int loc = page.indexOf(word);	//ì°¾ëŠ” wordì˜ ì²« character index
             while(loc!=-1){
-                char split1 = page.charAt(loc-1);	//ÇØ´ç wordÀÇ ¾ÕµÚ ¹®ÀÚ°¡ ¾ËÆÄºªÀÌ¸é ¾ÈµÊ
+                char split1 = page.charAt(loc-1);	//í•´ë‹¹ wordì˜ ì•ë’¤ ë¬¸ìê°€ ì•ŒíŒŒë²³ì´ë©´ ì•ˆë¨
                 char split2 = page.charAt(loc+word.length());
-                if(!Character.isLowerCase(split1) && !Character.isLowerCase(split2))  //¾ÕµÚ ±¸ºĞÀÚ°¡ ¿µ¹®ÀÌ ¾Æ´Ò °æ¿ì¸¸ ±âº» Á¡¼ö 1 Áõ°¡
+                if(!Character.isLowerCase(split1) && !Character.isLowerCase(split2))  //ì•ë’¤ êµ¬ë¶„ìê°€ ì˜ë¬¸ì´ ì•„ë‹ ê²½ìš°ë§Œ ê¸°ë³¸ ì ìˆ˜ 1 ì¦ê°€
                     default_score++;
-                loc = page.indexOf(word, loc+1);	//¹æ±İÀü Ã£Àº wordÀÇ µŞºÎºĞºÎÅÍ ÀçÅ½»ö
+                loc = page.indexOf(word, loc+1);	//ë°©ê¸ˆì „ ì°¾ì€ wordì˜ ë’·ë¶€ë¶„ë¶€í„° ì¬íƒìƒ‰
             }
-            score[i][0] = default_score;	//ÇØ´ç ÆäÀÌÁöÀÇ ±âº» Á¡¼ö ¼¼ÆÃ
-            ///////////////////////////////////////////ÀÚ½ÅÀÇ url Ã£±â
-            Pattern pattern = Pattern.compile("<meta property=\"og:url\" content=\"https://(\\S+)\"/>");	//Á¤±ÔÇ¥Çö½Ä ÀÌ¿ë. \S+ÇÏ¸é °ø¹é Á¦¿Ü ¸ğµç ¹®ÀÚ¿­
-            Matcher matcher = pattern.matcher(page);	//À§¿¡¼­ ÀúÀåÇÑ pattern°ú ÀÏÄ¡ÇÏ´Â ºÎºĞ Ã£À½
+            score[i][0] = default_score;	//í•´ë‹¹ í˜ì´ì§€ì˜ ê¸°ë³¸ ì ìˆ˜ ì„¸íŒ…
+            ///////////////////////////////////////////ìì‹ ì˜ url ì°¾ê¸°
+            Pattern pattern = Pattern.compile("<meta property=\"og:url\" content=\"https://(\\S+)\"/>");	//ì •ê·œí‘œí˜„ì‹ ì´ìš©. \S+í•˜ë©´ ê³µë°± ì œì™¸ ëª¨ë“  ë¬¸ìì—´
+            Matcher matcher = pattern.matcher(page);	//ìœ„ì—ì„œ ì €ì¥í•œ patternê³¼ ì¼ì¹˜í•˜ëŠ” ë¶€ë¶„ ì°¾ìŒ
             while(matcher.find()){
-                String tmp = matcher.group(1);	//group(1)ÀÌ¸é (\\S+)·Î ±¸ÇØÁø °ª¸¸ Ã£°Ô µÊ. group()ÀÌ¸é <meta~~ />±îÁö ÀüºÎ Ã£À½
-                link[i] = tmp;	//ÀÚ½ÅÀÇ ¸µÅ©°ª À§¿¡¼­ ±¸ÇÑ ¹®ÀÚ¿­·Î ÀúÀå
+                String tmp = matcher.group(1);	//group(1)ì´ë©´ (\\S+)ë¡œ êµ¬í•´ì§„ ê°’ë§Œ ì°¾ê²Œ ë¨. group()ì´ë©´ <meta~~ />ê¹Œì§€ ì „ë¶€ ì°¾ìŒ
+                link[i] = tmp;	//ìì‹ ì˜ ë§í¬ê°’ ìœ„ì—ì„œ êµ¬í•œ ë¬¸ìì—´ë¡œ ì €ì¥
             }
-            //////////////////////////////////////////////////////////¿ÜºÎ ¸µÅ© Ã£±â
-            outgoingLink[i] = new LinkedList<>();	//¿ÜºÎ ¸µÅ©¸¦ LinkedList¸¦ ÀÌ¿ëÇØ ÀúÀå
-            int outgoingnum=0;	//¿ÜºÎ ¸µÅ© °³¼ö
-            pattern = Pattern.compile("<a href=\"https://(\\S+)\">");	//Á¤±ÔÇ¥Çö½Ä ÀÌ¿ë
+            //////////////////////////////////////////////////////////ì™¸ë¶€ ë§í¬ ì°¾ê¸°
+            outgoingLink[i] = new LinkedList<>();	//ì™¸ë¶€ ë§í¬ë¥¼ LinkedListë¥¼ ì´ìš©í•´ ì €ì¥
+            int outgoingnum=0;	//ì™¸ë¶€ ë§í¬ ê°œìˆ˜
+            pattern = Pattern.compile("<a href=\"https://(\\S+)\">");	//ì •ê·œí‘œí˜„ì‹ ì´ìš©
             matcher = pattern.matcher(page);
-            while(matcher.find()){	//¿ÜºÎ ¸µÅ©µé LinkedList¿¡ add
+            while(matcher.find()){	//ì™¸ë¶€ ë§í¬ë“¤ LinkedListì— add
                 String tmp = matcher.group(1);
                 outgoingLink[i].add(tmp);
                 outgoingnum++;
             }
-            outgoing[i] = outgoingnum;	//¿ÜºÎ¸µÅ© °³¼ö ÀúÀå
+            outgoing[i] = outgoingnum;	//ì™¸ë¶€ë§í¬ ê°œìˆ˜ ì €ì¥
         }
-        //////////////////////////////////////////Á¤º¸ ¼¼ÆÃ ¿Ï·á
+        //////////////////////////////////////////ì •ë³´ ì„¸íŒ… ì™„ë£Œ
         for(int i=0; i<pages.length; i++){
-            double linkScore = 0;	//¸µÅ© Á¡¼ö
+            double linkScore = 0;	//ë§í¬ ì ìˆ˜
             try{
-                linkScore = score[i][0]/outgoing[i];	//ÀÚ½ÅÀÇ ±âº» Á¡¼ö¿¡ ¿ÜºÎ ¸µÅ© °³¼ö ³ª´®
+                linkScore = score[i][0]/outgoing[i];	//ìì‹ ì˜ ê¸°ë³¸ ì ìˆ˜ì— ì™¸ë¶€ ë§í¬ ê°œìˆ˜ ë‚˜ëˆ”
             }
             catch(Exception e) {
                 linkScore = 0;
             }
-            for(String incoming : outgoingLink[i]){	//°¢ ¿ÜºÎ ¸µÅ©¿¡ ´ëÇØ ÇØ´ç ÆäÀÌÁö¿¡ ¸µÅ© Á¡¼ö ´õÇØÁÜ
+            for(String incoming : outgoingLink[i]){	//ê° ì™¸ë¶€ ë§í¬ì— ëŒ€í•´ í•´ë‹¹ í˜ì´ì§€ì— ë§í¬ ì ìˆ˜ ë”í•´ì¤Œ
                 for(int j=0; j<pages.length; j++){
                     if(link[j].equals(incoming)){
                         score[j][1] += linkScore;
@@ -69,8 +69,8 @@ class Solution {
                 
             }
         }
-        /////////////////////////////////////////// ¸µÅ© Á¡¼ö °è»ê ¿Ï·á
-        for(int i=0; i<pages.length; i++){	//ÃÖ´ë Á¡¼ö¸¦ °®´Â ÆäÀÌÁö Ã£±â
+        /////////////////////////////////////////// ë§í¬ ì ìˆ˜ ê³„ì‚° ì™„ë£Œ
+        for(int i=0; i<pages.length; i++){	//ìµœëŒ€ ì ìˆ˜ë¥¼ ê°–ëŠ” í˜ì´ì§€ ì°¾ê¸°
             if(score[i][0] + score[i][1] > maxval){
                 maxval = score[i][0]+score[i][1];
                 answer = i;
