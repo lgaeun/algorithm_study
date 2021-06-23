@@ -10,19 +10,19 @@ using namespace std;
 
 int n, m;
 int map[51][51];
-string bit_map[51][51];//ºñÆ®·Î º¯È¯ÇÑ º® Á¤º¸
+string bit_map[51][51];//ë¹„íŠ¸ë¡œ ë³€í™˜í•œ ë²½ ì •ë³´
 
-int room[51][51];//°¢ Ä­ÀÌ ¾î´À ¹æ¿¡ ÇØ´çÇÏ´ÂÁö
-int room_num[51] = { 0, };//°¢ ¹æ º°·Î ¸îÄ­¾¿ ÀÖ´ÂÁö
-int adj[51][51];//¹æ ¹øÈ£¸¶´Ù ÀÎÁ¢ÇÑÁö
-int room_cnt = 0;//¹æ °³¼ö
+int room[51][51];//ê° ì¹¸ì´ ì–´ëŠ ë°©ì— í•´ë‹¹í•˜ëŠ”ì§€
+int room_num[51] = { 0, };//ê° ë°© ë³„ë¡œ ëª‡ì¹¸ì”© ìˆëŠ”ì§€
+int adj[51][51];//ë°© ë²ˆí˜¸ë§ˆë‹¤ ì¸ì ‘í•œì§€
+int room_cnt = 0;//ë°© ê°œìˆ˜
 int max_num = 0;
 
 int visit[51][51];
 int bfs_visit[51][51];
 
-int dx[4] = { 1,0,-1,0 };//³²µ¿ºÏ¼­
-int dy[4] = { 0,1,0,-1 };//³²µ¿ºÏ¼­
+int dx[4] = { 1,0,-1,0 };//ë‚¨ë™ë¶ì„œ
+int dy[4] = { 0,1,0,-1 };//ë‚¨ë™ë¶ì„œ
 
 int getMax(int x, int y) {
 	return x > y ? x : y;
@@ -30,7 +30,7 @@ int getMax(int x, int y) {
 
 void BFS(int x, int y) {
 	queue< pair< int, pair<int, int> > >q;
-	q.push({ room[x][y], { x,y } });//¹æ ¹øÈ£, x, y ÁÂÇ¥
+	q.push({ room[x][y], { x,y } });//ë°© ë²ˆí˜¸, x, y ì¢Œí‘œ
 	while (!q.empty()) {
 		pair<int, pair<int, int> > p = q.front();
 		q.pop();
@@ -48,10 +48,10 @@ void BFS(int x, int y) {
 				}
 				q.push({ room[nx][ny], {nx,ny} });
 				
-			}//¹üÀ§¿¡ ÇØ´çÇÏ°í º®ÀÌ ¾ø´Â °æ¿ì
+			}//ë²”ìœ„ì— í•´ë‹¹í•˜ê³  ë²½ì´ ì—†ëŠ” ê²½ìš°
 		}
 	}
-}//ÀÎÁ¢ÇÑ ¹æÀ» Ã£´Â °Í
+}//ì¸ì ‘í•œ ë°©ì„ ì°¾ëŠ” ê²ƒ
 
 void DFS(int x, int y) {
 	room[x][y] = room_cnt;
@@ -64,7 +64,7 @@ void DFS(int x, int y) {
 				visit[nx][ny] = 1;
 				DFS(nx, ny);
 			}
-		}//¹üÀ§¿¡ ÇØ´çÇÏ°í º®ÀÌ ¾ø´Â °æ¿ì
+		}//ë²”ìœ„ì— í•´ë‹¹í•˜ê³  ë²½ì´ ì—†ëŠ” ê²½ìš°
 	}
 }
 
@@ -81,7 +81,7 @@ int main() {
 			bitset<4> bs(map[i][j]);
 			bit_map[i][j] = bs.to_string();
 		}
-	}//bit·Î º¯È¯ -> 11Àº 1011 (³²µ¿ºÏ¼­)
+	}//bitë¡œ ë³€í™˜ -> 11ì€ 1011 (ë‚¨ë™ë¶ì„œ)
 
 	/*
 	for (int i = 0; i < n; i++) {
@@ -131,7 +131,7 @@ int main() {
 
 
 /*
-2234. ¼º°û
+2234. ì„±ê³½
 https://www.acmicpc.net/problem/2234
 
 
